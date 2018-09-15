@@ -36,3 +36,4 @@ set nowrap
 syntax enable
 colorscheme monokai-phoenix
 hi Normal guibg=NONE ctermbg=NONE
+set scrolloff=10
