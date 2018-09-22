@@ -1,3 +1,4 @@
+set encoding=UTF-8
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -16,6 +17,7 @@ Plugin 'fatih/vim-go'
 Plugin 'mxw/vim-jsx'
 Plugin 'reewr/vim-monokai-phoenix'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -37,3 +39,4 @@ syntax enable
 colorscheme monokai-phoenix
 hi Normal guibg=NONE ctermbg=NONE
 set scrolloff=10
+set guifont=DroidSansMono\ Nerd\ Font\ 11
