@@ -142,6 +142,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+#Alt-Tab
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -169,6 +173,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#bindsym $mod+Shift+g gedit
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
+
+new_window 1pixel
+
 #gaming
 for_window [class="Steam"] floating enable, border none
 
@@ -184,6 +195,11 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
+
+## Esc Caps swap
+exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+exec --no-startup-id xmodmap -e "clear lock" #disable caps lock switch
+
 exec --no-startup-id feh --bg-scale ~/Pictures/227446-widescreen-samurai-jack-backgrounds-1920x1090-for-android-tablet.jpg
 
-exec --no-startup-id compton -b -c --vsync opengl
+exec compton --sw-opti --vsync opengl-swc --paint-on-overlay --blur-background --blur-kern 5x5box
