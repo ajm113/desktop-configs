@@ -34,9 +34,43 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
+"
+set mouse=
 set nowrap
 syntax enable
 colorscheme monokai-phoenix
 hi Normal guibg=NONE ctermbg=NONE
-set scrolloff=10
+
+" Close NERDTree if only window.
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Nerdtree
+" Start Nerdtree if `vim` is used
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Start Nerdtree if `vim foldername` is used	
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+
+" JSX syntax highlighting on jsx files only
+let g:jsx_ext_required = 1
+
+set listchars=eol:?,tab:.\ ,trail:~,extends:>,precedes:<
+noremap <F5> :set list!<CR>
+inoremap <F5> <C-o>:set list!<CR>
+cnoremap <F5> <C-c>:set list!<CR>
+map <C-n> :NERDTreeToggle<CR>
+
 set guifont=DroidSansMono\ Nerd\ Font\ 11
+
+set scrolloff=10
+set number
+
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
