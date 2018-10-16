@@ -195,11 +195,13 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
-
 ## Esc Caps swap
 exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 exec --no-startup-id xmodmap -e "clear lock" #disable caps lock switch
 
-exec --no-startup-id feh --bg-scale ~/Pictures/227446-widescreen-samurai-jack-backgrounds-1920x1090-for-android-tablet.jpg
+exec "redshift -l $(curl ipinfo.io | jq -j .loc | tr ',' ':')"
+
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpaper/7molnYb.jpg
 
 exec compton --sw-opti --vsync opengl-swc --paint-on-overlay --blur-background --blur-kern 5x5box
+
